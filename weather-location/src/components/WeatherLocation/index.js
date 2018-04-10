@@ -6,9 +6,12 @@ import React from 'react';
 import WeatherData from './WeatherData';
 import Location from './Location';
 
+// style
+import './style.css';
+
 // esta constante es una función ES6 que devuelve un div
 const WeatherLocation = () => (
-    <div>
+    <div className='weatherLocationCont'>
         <Location city={'Banfield'} state={'Buenos Aires'} />
         <WeatherData />
     </div>

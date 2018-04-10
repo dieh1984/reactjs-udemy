@@ -5,11 +5,14 @@ import WeatherTemperature from './WeatherTemperature'
 import WeatherExtrainfo from './WeatherExtrainfo';
 
 // constants
-import { DAY_SUNNY } from '../../../constants/weathers';
+import { SHOWERS } from '../../../constants/weathers';
+
+// style
+import './style.css'
 
 const WeatherData = () => (
-    <div>
-        <WeatherTemperature temperature={10} weatherState={DAY_SUNNY} />
+    <div className='weatherDataCont'>
+        <WeatherTemperature temperature={10} weatherState={SHOWERS} />
         <WeatherExtrainfo humidity={80} wind={'10m/s'} />
     </div>
 );

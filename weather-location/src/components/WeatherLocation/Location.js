@@ -20,7 +20,11 @@ const Location = (props) => {
     */
     const { city, state } = props;
 
-    return <div><h1>{city}, {state}</h1></div>
+    return <div className='locationCont'>
+                <h1>
+                    {city}, {state}
+                </h1>
+            </div>
 }
 
 Location.propTypes = {
