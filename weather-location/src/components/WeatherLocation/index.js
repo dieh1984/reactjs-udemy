@@ -1,6 +1,7 @@
 // cualquier componente que vayamos a crear, 
 // vamos a necesitar de la libreria de React.
 import React, {Component} from 'react';
+import CircularProgress from 'material-ui/CircularProgress';
 import toFixed from 'to-fixed';
 
 // constants
@@ -80,7 +81,8 @@ class WeatherLocation extends Component {
         console.log("render");
         return (<div className='weatherLocationCont'>
             <Location city={this.state.city} state={this.state.state} />
-            {this.state.datos ? <WeatherData data={this.state.datos} /> : 'Cargando...'}
+            {this.state.datos ? <WeatherData data={this.state.datos} /> : 
+                <CircularProgress size={60} thickness={7} />}
             <button onClick={this.handleUpdateClick}>Actualizar</button>
         </div>);
     }

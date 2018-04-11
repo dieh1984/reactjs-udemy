@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './App.css';
 
 // componentes
@@ -7,9 +8,11 @@ import WeatherLocation from './components/WeatherLocation';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <WeatherLocation />
-      </div>
+      <MuiThemeProvider>
+        <div className="App">
+          <WeatherLocation />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
