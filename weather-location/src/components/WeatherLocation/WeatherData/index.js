@@ -1,20 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 //components
 import WeatherTemperature from './WeatherTemperature'
 import WeatherExtrainfo from './WeatherExtrainfo';
 
-// constants
-import { SHOWERS } from '../../../constants/weathers';
-
 // style
 import './style.css'
 
-const WeatherData = () => (
-    <div className='weatherDataCont'>
-        <WeatherTemperature temperature={10} weatherState={SHOWERS} />
-        <WeatherExtrainfo humidity={80} wind={'10m/s'} />
-    </div>
-);
+const WeatherData = (props) => {
+    const {temperature, weatherState, humidity, wind} = props.data;
+    return (<div className='weatherDataCont'>
+        <WeatherTemperature temperature={temperature} weatherState={weatherState} />
+        <WeatherExtrainfo humidity={humidity} wind={wind} />
+    </div>);
+};
+
+WeatherData.propTypes = {
+    // PropTypes.share() permite definir tipos de variables y si son requeridas
+    // dentro de un objeto como se ve a continuación:
+    data: PropTypes.shape({
+        temperature: PropTypes.number.isRequired,
+        weatherState: PropTypes.string.isRequired,
+        humidity: PropTypes.number.isRequired,
+        wind: PropTypes.string.isRequired,
+    }),
+};
 
 export default WeatherData;
