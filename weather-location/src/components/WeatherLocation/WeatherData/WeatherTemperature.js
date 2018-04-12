@@ -3,32 +3,23 @@ import WeatherIcons from 'react-weathericons';
 import PropTypes from 'prop-types';
 
 // constants
-import { SHOWERS,
+import { THUNDERSTORM,
+        RAIN,
+        SHOW,
         DAY_SUNNY,
-        SNOW_WIND,
-        THUNDERSTORM,
-        WINDY } from '../../../constants/weathers';
+        CLOUD } from '../../../constants/weathers';
 
-const getWeatherIcon = (weatherState) => {
-    switch (weatherState) {
-        case SHOWERS:
-            return "showers";
-        case DAY_SUNNY:
-            return "day-sunny";
-        case SNOW_WIND:
-            return "snow-wind";
-        case THUNDERSTORM:
-            return "thunderstorm";
-        case WINDY:
-            return "windy";
-        default:
-            return "cloud";
-    }
+const getWeatherIcon = (id) => {
+    if(id < 300) return THUNDERSTORM;
+    else if(id >= 500 && id < 600) return RAIN;
+    else if(id < 700) return SHOW;
+    else if(id === 800) return DAY_SUNNY; 
+    else return CLOUD;
 };
 
-const WeatherTemperature = ({temperature, weatherState}) => (
+const WeatherTemperature = ({temperature, id}) => (
     <div className='weatherTemperatureCont'>
-        <WeatherIcons className='wicon' name={getWeatherIcon(weatherState)} size="4x" />
+        <WeatherIcons className='wicon' name={getWeatherIcon(id)} size="4x" />
         <span className='temperature'>{temperature}</span>
         <span className='temperatureType'> C°</span>
     </div>
@@ -36,7 +27,7 @@ const WeatherTemperature = ({temperature, weatherState}) => (
 
 WeatherTemperature.propTypes = {
     temperature: PropTypes.number.isRequired,
-    weatherState: PropTypes.string
+    id: PropTypes.number
 };
 
 export default WeatherTemperature;

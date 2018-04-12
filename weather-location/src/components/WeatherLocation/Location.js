@@ -18,18 +18,17 @@ const Location = (props) => {
     Donde busca la variable de props que es la misma
     que el nombre de la constante.
     */
-    const { city, state } = props;
+    const { city } = props;
 
     return <div className='locationCont'>
                 <h1>
-                    {city}, {state}
+                    {city}
                 </h1>
             </div>
 }
 
 Location.propTypes = {
-    city: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired
+    city: PropTypes.string.isRequired
 }
 
 export default Location;
