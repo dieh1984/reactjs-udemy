@@ -11,25 +11,27 @@ class LocationList extends Component{
         }
     }
 
-    handleWeatherLocationClick = city => {
+    handleWeatherLocationClick = (city, func) => {
         console.log(city);
+        func(city);
     }
 
-    strToComponent = (cities) => (
+    strToComponent = (cities, func) => (
         cities.map(city => (<WeatherLocation key={city} city={city} 
-                                onWeatherLocationClick={() => this.handleWeatherLocationClick(city)} />))
+                                onWeatherLocationClick={() => this.handleWeatherLocationClick(city, func)} />))
     )
 
     render(){
-
+        const func = this.props.onSelectedLocation;
         return (<div>
-            { this.strToComponent(this.state.cities) }
+            { this.strToComponent(this.state.cities, func) }
         </div>);
     }
 }
 
 LocationList.propTypes = {
     cities: PropTypes.array.isRequired,
+    onSelectedLocation: PropTypes.func,
 }
 
 export default LocationList;

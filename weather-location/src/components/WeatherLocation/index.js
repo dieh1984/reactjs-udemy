@@ -35,7 +35,7 @@ class WeatherLocation extends Component {
         const data = {
             id, 
             humidity,
-            temperature: toFixed(temp, 0),
+            temperature: toFixed(temp, 1),
             wind: `${speed} m/s`
         };
         return data;
@@ -74,7 +74,7 @@ class WeatherLocation extends Component {
             <Location city={this.state.city} />
             {this.state.datos ? <WeatherData data={this.state.datos} /> : 
                 <CircularProgress size={60} thickness={7} />}
-            <button onClick={this.handleUpdateClick}>Actualizar</button>
+            {/*<button onClick={this.handleUpdateClick}>Actualizar</button>*/}
         </div>;
     }
 };
